@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bolumler">
+    <Key>
+      <PropertyRef Name="Bolumid" />
+    </Key>
+    <Property Name="Bolumid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BolumAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ogrenci" Relationship="Self.FK_ogrenci_bolumler" FromRole="bolumler" ToRole="ogrenci" />
+  </EntityType>
+  <EntityType Name="borclar">
+    <Key>
+      <PropertyRef Name="OgrId" />
+    </Key>
+    <Property Name="OgrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OgrAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrKalanBorc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrBorcId" Type="Int32" />
+    <NavigationProperty Name="ogrenci" Relationship="Self.FK_borclar_ogrenci" FromRole="borclar" ToRole="ogrenci" />
+  </EntityType>
+  <EntityType Name="giderler">
+    <Key>
+      <PropertyRef Name="Odemeid" />
+    </Key>
+    <Property Name="Odemeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Elektrik" Type="Int32" />
+    <Property Name="Su" Type="Int32" />
+    <Property Name="Dogalgaz" Type="Int32" />
+    <Property Name="internet" Type="Int32" />
+    <Property Name="Gida" Type="Int32" />
+    <Property Name="Personel" Type="Int32" />
+    <Property Name="Diger" Type="Int32" />
+    <Property Name="personelId" Type="Int32" />
+    <NavigationProperty Name="personel1" Relationship="Self.FK_giderler_personel1" FromRole="giderler" ToRole="personel" />
+    <NavigationProperty Name="Kasa" Relationship="Self.FK_Kasa_giderler" FromRole="giderler" ToRole="Kasa" />
+  </EntityType>
+  <EntityType Name="Kasa">
+    <Key>
+      <PropertyRef Name="OdemeId" />
+    </Key>
+    <Property Name="OdemeAy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OdemeMiktar" Type="Int32" />
+    <Property Name="OdemeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="giderler" Relationship="Self.FK_Kasa_giderler" FromRole="Kasa" ToRole="giderler" />
+    <NavigationProperty Name="ogrenci" Relationship="Self.FK_Kasa_ogrenci" FromRole="Kasa" ToRole="ogrenci" />
+  </EntityType>
+  <EntityType Name="kullanici">
+    <Key>
+      <PropertyRef Name="kullaniciId" />
+    </Key>
+    <Property Name="kullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="odalar">
+    <Key>
+      <PropertyRef Name="OdaId" />
+    </Key>
+    <Property Name="OdaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OdaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OdaKapasite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ogrenci" Relationship="Self.FK_ogrenci_odalar" FromRole="odalar" ToRole="ogrenci" />
+  </EntityType>
+  <EntityType Name="ogrenci">
+    <Key>
+      <PropertyRef Name="Ogrid" />
+    </Key>
+    <Property Name="Ogrid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OgrAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrTc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrDogum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrBolum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrOdaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrVeliAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrVeliTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrVeliAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OgrenciBolumid" Type="Int32" />
+    <Property Name="OgrOda" Type="Int32" />
+    <NavigationProperty Name="bolumler" Relationship="Self.FK_ogrenci_bolumler" FromRole="ogrenci" ToRole="bolumler" />
+    <NavigationProperty Name="borclar" Relationship="Self.FK_borclar_ogrenci" FromRole="ogrenci" ToRole="borclar" />
+    <NavigationProperty Name="Kasa" Relationship="Self.FK_Kasa_ogrenci" FromRole="ogrenci" ToRole="Kasa" />
+    <NavigationProperty Name="odalar" Relationship="Self.FK_ogrenci_odalar" FromRole="ogrenci" ToRole="odalar" />
+  </EntityType>
+  <EntityType Name="personel">
+    <Key>
+      <PropertyRef Name="Personelid" />
+    </Key>
+    <Property Name="Personelid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PersonelDepartman" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="giderler" Relationship="Self.FK_giderler_personel1" FromRole="personel" ToRole="giderler" />
+  </EntityType>
+  <Association Name="FK_ogrenci_bolumler">
+    <End Role="bolumler" Type="Self.bolumler" Multiplicity="0..1" />
+    <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bolumler">
+        <PropertyRef Name="Bolumid" />
+      </Principal>
+      <Dependent Role="ogrenci">
+        <PropertyRef Name="OgrenciBolumid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_borclar_ogrenci">
+    <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="0..1" />
+    <End Role="borclar" Type="Self.borclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ogrenci">
+        <PropertyRef Name="Ogrid" />
+      </Principal>
+      <Dependent Role="borclar">
+        <PropertyRef Name="OgrBorcId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_giderler_personel1">
+    <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+    <End Role="giderler" Type="Self.giderler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personel">
+        <PropertyRef Name="Personelid" />
+      </Principal>
+      <Dependent Role="giderler">
+        <PropertyRef Name="personelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kasa_giderler">
+    <End Role="giderler" Type="Self.giderler" Multiplicity="1" />
+    <End Role="Kasa" Type="Self.Kasa" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="giderler">
+        <PropertyRef Name="Odemeid" />
+      </Principal>
+      <Dependent Role="Kasa">
+        <PropertyRef Name="OdemeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kasa_ogrenci">
+    <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+    <End Role="Kasa" Type="Self.Kasa" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ogrenci">
+        <PropertyRef Name="Ogrid" />
+      </Principal>
+      <Dependent Role="Kasa">
+        <PropertyRef Name="OdemeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ogrenci_odalar">
+    <End Role="odalar" Type="Self.odalar" Multiplicity="0..1" />
+    <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="odalar">
+        <PropertyRef Name="OdaId" />
+      </Principal>
+      <Dependent Role="ogrenci">
+        <PropertyRef Name="OgrOda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="projeEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bolumler" EntityType="Self.bolumler" />
+    <EntitySet Name="borclar" EntityType="Self.borclar" />
+    <EntitySet Name="giderler" EntityType="Self.giderler" />
+    <EntitySet Name="Kasa" EntityType="Self.Kasa" />
+    <EntitySet Name="kullanici" EntityType="Self.kullanici" />
+    <EntitySet Name="odalar" EntityType="Self.odalar" />
+    <EntitySet Name="ogrenci" EntityType="Self.ogrenci" />
+    <EntitySet Name="personel" EntityType="Self.personel" />
+    <AssociationSet Name="FK_ogrenci_bolumler" Association="Self.FK_ogrenci_bolumler">
+      <End Role="bolumler" EntitySet="bolumler" />
+      <End Role="ogrenci" EntitySet="ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_borclar_ogrenci" Association="Self.FK_borclar_ogrenci">
+      <End Role="ogrenci" EntitySet="ogrenci" />
+      <End Role="borclar" EntitySet="borclar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_giderler_personel1" Association="Self.FK_giderler_personel1">
+      <End Role="personel" EntitySet="personel" />
+      <End Role="giderler" EntitySet="giderler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kasa_giderler" Association="Self.FK_Kasa_giderler">
+      <End Role="giderler" EntitySet="giderler" />
+      <End Role="Kasa" EntitySet="Kasa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kasa_ogrenci" Association="Self.FK_Kasa_ogrenci">
+      <End Role="ogrenci" EntitySet="ogrenci" />
+      <End Role="Kasa" EntitySet="Kasa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ogrenci_odalar" Association="Self.FK_ogrenci_odalar">
+      <End Role="odalar" EntitySet="odalar" />
+      <End Role="ogrenci" EntitySet="ogrenci" />
+    </AssociationSet>
+    <FunctionImport Name="ogrenciGetir" ReturnType="Collection(projeModel.ogrenciGetir_Result)">
+      <Parameter Name="ogrenci" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ogrenciGetir_Result">
+    <Property Type="Int32" Name="Ogrid" Nullable="false" />
+    <Property Type="String" Name="OgrAd" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrSoyad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrTc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrTelefon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrDogum" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrBolum" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrMail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrOdaNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrVeliAdSoyad" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrVeliTelefon" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OgrVeliAdres" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="OgrenciBolumid" Nullable="true" />
+    <Property Type="Int32" Name="OgrOda" Nullable="true" />
+  </ComplexType>
+</Schema>

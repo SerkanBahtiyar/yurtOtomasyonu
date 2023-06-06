@@ -1,0 +1,29 @@
+﻿@using projeSerB.Models.Entity
+@model List<bolumler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Bölüm İd</th>
+        <th>Bölüm Adı</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    <tbody>
+        @foreach (var getir in Model)
+        {
+            <tr>
+                <th><font color="orange">@getir.Bolumid</font></th>
+                <th><font color="orange">@getir.BolumAd</font></th>
+                <td><a href="/bolumler/bolumGetir/@getir.Bolumid" class="btn btn-primary">güncelle</a></td>
+
+                <td><a href="/bolumler/sil/@getir.Bolumid" class="btn btn-danger">sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/bolumler/yeniBolum/" class="btn btn-success">Bölüm ekle</a>
+

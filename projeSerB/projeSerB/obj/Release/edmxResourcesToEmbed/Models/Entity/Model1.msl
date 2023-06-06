@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="projeModelStoreContainer" CdmEntityContainer="projeEntities2">
+    <EntitySetMapping Name="bolumler">
+      <EntityTypeMapping TypeName="projeModel.bolumler">
+        <MappingFragment StoreEntitySet="bolumler">
+          <ScalarProperty Name="Bolumid" ColumnName="Bolumid" />
+          <ScalarProperty Name="BolumAd" ColumnName="BolumAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="borclar">
+      <EntityTypeMapping TypeName="projeModel.borclar">
+        <MappingFragment StoreEntitySet="borclar">
+          <ScalarProperty Name="OgrId" ColumnName="OgrId" />
+          <ScalarProperty Name="OgrAd" ColumnName="OgrAd" />
+          <ScalarProperty Name="OgrSoyad" ColumnName="OgrSoyad" />
+          <ScalarProperty Name="OgrKalanBorc" ColumnName="OgrKalanBorc" />
+          <ScalarProperty Name="OgrBorcId" ColumnName="OgrBorcId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giderler">
+      <EntityTypeMapping TypeName="projeModel.giderler">
+        <MappingFragment StoreEntitySet="giderler">
+          <ScalarProperty Name="Odemeid" ColumnName="Odemeid" />
+          <ScalarProperty Name="Elektrik" ColumnName="Elektrik" />
+          <ScalarProperty Name="Su" ColumnName="Su" />
+          <ScalarProperty Name="Dogalgaz" ColumnName="Dogalgaz" />
+          <ScalarProperty Name="internet" ColumnName="internet" />
+          <ScalarProperty Name="Gida" ColumnName="Gida" />
+          <ScalarProperty Name="Personel" ColumnName="Personel" />
+          <ScalarProperty Name="Diger" ColumnName="Diger" />
+          <ScalarProperty Name="personelId" ColumnName="personelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kasa">
+      <EntityTypeMapping TypeName="projeModel.Kasa">
+        <MappingFragment StoreEntitySet="Kasa">
+          <ScalarProperty Name="OdemeAy" ColumnName="OdemeAy" />
+          <ScalarProperty Name="OdemeMiktar" ColumnName="OdemeMiktar" />
+          <ScalarProperty Name="OdemeId" ColumnName="OdemeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kullanici">
+      <EntityTypeMapping TypeName="projeModel.kullanici">
+        <MappingFragment StoreEntitySet="kullanici">
+          <ScalarProperty Name="rol" ColumnName="rol" />
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="odalar">
+      <EntityTypeMapping TypeName="projeModel.odalar">
+        <MappingFragment StoreEntitySet="odalar">
+          <ScalarProperty Name="OdaId" ColumnName="OdaId" />
+          <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
+          <ScalarProperty Name="OdaKapasite" ColumnName="OdaKapasite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ogrenci">
+      <EntityTypeMapping TypeName="projeModel.ogrenci">
+        <MappingFragment StoreEntitySet="ogrenci">
+          <ScalarProperty Name="Ogrid" ColumnName="Ogrid" />
+          <ScalarProperty Name="OgrAd" ColumnName="OgrAd" />
+          <ScalarProperty Name="OgrSoyad" ColumnName="OgrSoyad" />
+          <ScalarProperty Name="OgrTc" ColumnName="OgrTc" />
+          <ScalarProperty Name="OgrTelefon" ColumnName="OgrTelefon" />
+          <ScalarProperty Name="OgrDogum" ColumnName="OgrDogum" />
+          <ScalarProperty Name="OgrBolum" ColumnName="OgrBolum" />
+          <ScalarProperty Name="OgrMail" ColumnName="OgrMail" />
+          <ScalarProperty Name="OgrOdaNo" ColumnName="OgrOdaNo" />
+          <ScalarProperty Name="OgrVeliAdSoyad" ColumnName="OgrVeliAdSoyad" />
+          <ScalarProperty Name="OgrVeliTelefon" ColumnName="OgrVeliTelefon" />
+          <ScalarProperty Name="OgrVeliAdres" ColumnName="OgrVeliAdres" />
+          <ScalarProperty Name="OgrenciBolumid" ColumnName="OgrenciBolumid" />
+          <ScalarProperty Name="OgrOda" ColumnName="OgrOda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personel">
+      <EntityTypeMapping TypeName="projeModel.personel">
+        <MappingFragment StoreEntitySet="personel">
+          <ScalarProperty Name="Personelid" ColumnName="Personelid" />
+          <ScalarProperty Name="PersonelAdSoyad" ColumnName="PersonelAdSoyad" />
+          <ScalarProperty Name="PersonelDepartman" ColumnName="PersonelDepartman" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ogrenciGetir" FunctionName="projeModel.Store.ogrenciGetir">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="projeModel.ogrenciGetir_Result">
+          <ScalarProperty Name="Ogrid" ColumnName="Ogrid" />
+          <ScalarProperty Name="OgrAd" ColumnName="OgrAd" />
+          <ScalarProperty Name="OgrSoyad" ColumnName="OgrSoyad" />
+          <ScalarProperty Name="OgrTc" ColumnName="OgrTc" />
+          <ScalarProperty Name="OgrTelefon" ColumnName="OgrTelefon" />
+          <ScalarProperty Name="OgrDogum" ColumnName="OgrDogum" />
+          <ScalarProperty Name="OgrBolum" ColumnName="OgrBolum" />
+          <ScalarProperty Name="OgrMail" ColumnName="OgrMail" />
+          <ScalarProperty Name="OgrOdaNo" ColumnName="OgrOdaNo" />
+          <ScalarProperty Name="OgrVeliAdSoyad" ColumnName="OgrVeliAdSoyad" />
+          <ScalarProperty Name="OgrVeliTelefon" ColumnName="OgrVeliTelefon" />
+          <ScalarProperty Name="OgrVeliAdres" ColumnName="OgrVeliAdres" />
+          <ScalarProperty Name="OgrenciBolumid" ColumnName="OgrenciBolumid" />
+          <ScalarProperty Name="OgrOda" ColumnName="OgrOda" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,36 @@
+﻿@model projeSerB.Models.Entity.giderler
+@{
+    ViewBag.Title = "giderGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("guncelle", "giderler", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(s => s.Odemeid)
+        @Html.TextBoxFor(s => s.Odemeid, new { @class = "form-control" })
+        @Html.LabelFor(s => s.Elektrik)
+        @Html.TextBoxFor(s => s.Elektrik, new { @class = "form-control" })
+        @Html.LabelFor(s => s.Su)
+        @Html.TextBoxFor(s=> s.Su, new { @class = "form-control" })
+        @Html.LabelFor(s => s.Dogalgaz)
+        @Html.TextBoxFor(s => s.Dogalgaz, new { @class = "form-control" })
+        @Html.LabelFor(s => s.internet)
+        @Html.TextBoxFor(s => s.internet, new { @class = "form-control" })
+        @Html.LabelFor(s => s.Gida)
+        @Html.TextBoxFor(s => s.Gida, new { @class = "form-control" })
+        @Html.LabelFor(s => s.Personel)
+        @Html.TextBoxFor(s => s.Personel, new { @class = "form-control" })
+        @Html.LabelFor(s => s.Diger)
+        @Html.TextBoxFor(s => s.Diger, new { @class = "form-control" })
+
+    </div>
+    <div>
+        <div style="margin-bottom:100px">
+            <button class="btn btn-warning">güncelle</button>
+        </div>
+    </div>
+}
+
+
+

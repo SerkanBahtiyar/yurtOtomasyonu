@@ -1,0 +1,46 @@
+﻿@model projeSerB.Models.Entity.ogrenci
+
+@{
+    ViewBag.Title = "guncelleme_getir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Guncelle", "ogrenci", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ogrid)
+        @Html.TextBoxFor(m => m.Ogrid, new { @class = "form-control" })
+        @Html.LabelFor(m=>m.OgrAd)
+        @Html.TextBoxFor(m=>m.OgrAd, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrSoyad)
+        @Html.TextBoxFor(m => m.OgrSoyad, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrTc)
+        @Html.TextBoxFor(m => m.OgrTc, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrTelefon)
+        @Html.TextBoxFor(m => m.OgrTelefon, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrDogum)
+        @Html.TextBoxFor(m => m.OgrDogum, new { @class = "form-control" })
+        @Html.LabelFor(m => m.odalar.OdaNo)
+        @Html.TextBoxFor(m => m.odalar.OdaNo, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrMail)
+        @Html.TextBoxFor(m => m.OgrMail, new { @class = "form-control" })
+        @Html.LabelFor(m => m.bolumler.BolumAd)
+        @Html.TextBoxFor(m => m.bolumler.BolumAd, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrVeliAdSoyad)
+        @Html.TextBoxFor(m => m.OgrVeliAdSoyad, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrVeliTelefon)
+        @Html.TextBoxFor(m => m.OgrVeliTelefon, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrVeliAdres)
+        @Html.TextBoxFor(m => m.OgrVeliAdres, new { @class = "form-control" })
+
+
+
+
+    </div>
+    <div>
+        <div style="margin-bottom:100px">
+            <button class="btn btn-warning">güncelle</button>
+            </div>
+        </div>
+}
+
+

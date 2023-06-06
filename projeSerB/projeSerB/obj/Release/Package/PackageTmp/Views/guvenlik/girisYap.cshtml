@@ -1,0 +1,35 @@
+﻿
+@model projeSerB.Models.Entity.kullanici
+
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Giriş Sayfası</title>
+    <link rel="stylesheet" href="~/logincss/style.css">
+</head>
+<body>
+    <form class="giris-kutusu" action="girisYap" method="post">
+        @using (Html.BeginForm("girisYap", "guvenlik", FormMethod.Post))
+
+
+        {
+            <h1>Giriş</h1>
+            <input type="text" name="ad" placeholder="Kullanıcı Adı">
+            <input type="password" name="sifre" placeholder="Şifre">
+            <input type="submit" name="" value="Giriş">
+
+
+
+
+        }
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@using projeSerB.Models.Entity
+@model List<borclar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Öğrenci İd</th>
+        <th>Öğrenci Adı</th>
+        <th>Öğrenci Soyadı</th>
+        <th>Öğrenci Kalan Borcu</th>
+
+        <th>güncelle </th>
+        <th>sil </th>
+
+    </tr>
+    <tbody>
+        @foreach (var getir in Model)
+        {
+            <tr>
+                <th><font color="orange">@getir.OgrId</font></th>
+                <th><font color="orange">@getir.OgrAd</font></th>
+                <th><font color="orange">@getir.OgrSoyad</font></th>
+                <th><font color="orange">@getir.OgrKalanBorc</font></th>
+                <td> <a href="/borc/guncelleme_getir/@getir.OgrId" class="btn btn-primary">güncelle</a></td>
+                <td> <a href="/borc/sil/@getir.OgrId" class="btn btn-danger">sil</a></td>
+               
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+

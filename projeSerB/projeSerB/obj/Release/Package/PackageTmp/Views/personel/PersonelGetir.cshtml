@@ -1,0 +1,25 @@
+﻿@model projeSerB.Models.Entity.personel
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+}
+
+@using (Html.BeginForm("guncelle", "personel", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(s => s.Personelid)
+        @Html.TextBoxFor(s => s.Personelid, new { @class = "form-control" })
+        @Html.LabelFor(s => s.PersonelAdSoyad)
+        @Html.TextBoxFor(s => s.PersonelAdSoyad, new { @class = "form-control" })
+        @Html.LabelFor(s => s.PersonelDepartman)
+        @Html.TextBoxFor(s => s.PersonelDepartman, new { @class = "form-control" })
+
+    </div>
+    <div>
+        <div style="margin-bottom:100px">
+            <button class="btn btn-warning">güncelle</button>
+        </div>
+    </div>
+}
+

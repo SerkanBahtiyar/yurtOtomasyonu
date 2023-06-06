@@ -1,0 +1,49 @@
+﻿@using projeSerB.Models.Entity
+@model List<ogrenciGetir_Result>
+@{
+    ViewBag.Title = "makine";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Öğrenci id </th>
+        <th>Öğrenci Adı </th>
+        <th>Öğrenci Soyadı </th>
+        <th>Öğrenci TC </th>
+        <th>Öğrenci Tel </th>
+        <th>Öğrenci Doğum Tarihi</th>
+        <th>Öğrenci Oda</th>
+        <th>Öğrenci Mail</th>
+        <th>Öğrenci Bölüm</th>
+        <th>Öğrenci Veli Ad Soyad</th>
+        <th>ÖğrenciVeli Telefon</th>
+        <th>Öğrenci Veli Adres</th>
+
+    </tr>
+    <tbody>
+        @foreach (var getir in Model)
+        {
+            <tr>
+                <th><font color="orange">@getir.Ogrid</font></th>
+                <td><font color="orange">@getir.OgrAd</font></td>
+                <td><font color="orange">@getir.OgrSoyad</font></td>
+                <td><font color="orange">@getir.OgrTc</font></td>
+                <td><font color="orange">@getir.OgrTelefon</font></td>
+                <td><font color="orange">@getir.OgrDogum</font></td>
+                <td><font color="orange">@getir.OgrOda</font></td>
+                <td><font color="orange">@getir.OgrMail</font></td>
+                <td><font color="orange">@getir.OgrBolum</font></td>
+                <td><font color="orange">@getir.OgrVeliAdSoyad</font></td>
+                <td><font color="orange">@getir.OgrVeliTelefon</font></td>
+                <td><font color="orange">@getir.OgrVeliAdres</font></td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

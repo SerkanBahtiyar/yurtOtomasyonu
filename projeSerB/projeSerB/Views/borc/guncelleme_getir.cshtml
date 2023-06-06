@@ -1,0 +1,26 @@
+﻿@model projeSerB.Models.Entity.borclar
+@{
+    ViewBag.Title = "guncelleme_getir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Guncelle", "borc", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.OgrId)
+        @Html.TextBoxFor(m => m.OgrId, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrAd)
+        @Html.TextBoxFor(m => m.OgrAd, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrSoyad)
+        @Html.TextBoxFor(m => m.OgrSoyad, new { @class = "form-control" })
+        @Html.LabelFor(m => m.OgrKalanBorc)
+        @Html.TextBoxFor(m => m.OgrKalanBorc, new { @class = "form-control" })
+          </div>
+    <div>
+        <div style="margin-bottom:100px">
+            <button class="btn btn-warning">güncelle</button>
+        </div>
+    </div>
+}
+

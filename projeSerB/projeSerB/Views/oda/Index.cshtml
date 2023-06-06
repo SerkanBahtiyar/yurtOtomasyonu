@@ -1,0 +1,30 @@
+﻿@using projeSerB.Models.Entity
+@model List<odalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Oda İd</th>
+        <th>Oda No</th>
+        <th>Oda Kapasite</th>
+        
+      
+    </tr>
+    <tbody>
+        @foreach (var getir in Model)
+        {
+            <tr>
+                <th><font color="orange">@getir.OdaId</font></th>
+                <th><font color="orange">@getir.OdaNo</font></th>
+                <th><font color="orange">@getir.OdaKapasite</font></th>
+             
+               
+            </tr>
+        }
+    </tbody>
+</table>
+
+

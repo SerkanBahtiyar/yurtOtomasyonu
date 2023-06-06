@@ -1,0 +1,30 @@
+﻿@using projeSerB.Models.Entity
+@model List<personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Personel İd</th>
+        <th>Personel Adı Soyadı</th>
+        <th>Personel Departman</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    <tbody>
+        @foreach (var getir in Model)
+        {
+            <tr>
+                <th><font color="orange">@getir.Personelid</font></th>
+                <th><font color="orange">@getir.PersonelAdSoyad</font></th>
+                <th><font color="orange">@getir.PersonelDepartman</font></th>
+                <td><a href="/personel/PersonelGetir/@getir.Personelid" class="btn btn-primary">güncelle</a></td>
+
+                <td><a href="/personel/sil/@getir.Personelid" class="btn btn-danger">sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/personel/yeniPersonel/" class="btn btn-success">Personel ekle</a>

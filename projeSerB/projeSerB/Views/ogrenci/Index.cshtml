@@ -1,0 +1,79 @@
+﻿@using projeSerB.Models.Entity
+@model List<ogrenci>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Index", "ogrenci", FormMethod.Get))
+{
+    <p>
+        <b>Aranacak öğrenci kimliği:</b>  @Html.TextBox("p")
+        <input type="submit" value="ara" />
+
+    </p>
+}
+<a href="/ogrenci/YeniOgrenci/" class="btn btn-success">Öğrenci ekle</a>
+<br /><br />
+
+<table class="table table-bordered" >
+   
+    <tr> 
+
+        <th>Öğrenci id </th>
+        <th>Öğrenci Adı </th>
+        <th>Öğrenci Soyadı </th>
+        <th>Öğrenci TC </th>
+        <th>Öğrenci Tel </th>
+        <th>Öğrenci Doğum Tarihi</th>
+        <th>Öğrenci Oda</th>
+        <th>Öğrenci Mail</th>
+        <th>Öğrenci Bölüm</th>
+        <th>Öğrenci Veli Ad Soyad</th>
+        <th>ÖğrenciVeli Telefon</th>
+        <th>Öğrenci Veli Adres</th>
+
+
+        <th>güncelle </th>
+        <th>sil</th>
+        <th>uyarı</th>
+
+    </tr>
+    <tbody>
+        @foreach (var getir in Model)
+        {
+            <tr>
+
+                <th><font color="orange">@getir.Ogrid</font></th>
+                <td><font color="orange">@getir.OgrAd</font></td>
+                <td><font color="orange">@getir.OgrSoyad</font></td>
+                <td><font color="orange">@getir.OgrTc</font></td>
+                <td><font color="orange">@getir.OgrTelefon</font></td>
+                <td><font color="orange">@getir.OgrDogum</font></td>
+                <td><font color="orange">@getir.odalar.OdaNo</font></td> 
+                <td><font color="orange">@getir.OgrMail</font></td>
+                <td><font color="orange">@getir.bolumler.BolumAd</font></td>
+                <td><font color="orange">@getir.OgrVeliAdSoyad</font></td>
+                <td><font color="orange">@getir.OgrVeliTelefon</font></td>
+                <td><font color="orange">@getir.OgrVeliAdres</font></td>
+
+                <td> <a href="/ogrenci/guncelleme_getir/@getir.Ogrid" class="btn btn-primary">güncelle</a></td>
+                <td> <a href="/ogrenci/sil/@getir.Ogrid" class="btn btn-danger">sil</a></td>
+                <td>@Html.ActionLink("sil butonu", "sil", new {id=getir.Ogrid }, new { @class = "btn btn-warning", onclick = "return confirm('silmek istiyor musunuz')" })</td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<style>
+    .table-bordered{
+      position:absolute;
+      left:0px;
+    }
+</style>
+
+

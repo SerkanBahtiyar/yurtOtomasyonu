@@ -1,0 +1,114 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Serkan Bahtiyar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><b>YURT OTOMASYONU</b></a>
+            </div>
+            <ul class="nav navbar-nav">
+                @if(User.IsInRole("A"))
+                {
+                    <li><a href="/ogrenci/Index">-Öğrenciler-</a></li>
+
+                }
+                @if (User.IsInRole("B"))
+                {
+                    <li><a href="/ogrenci/Index">-Öğrenciler-</a></li>
+
+                }
+
+
+
+
+                <li><a href="/giderler/Index">-Giderler-</a></li>
+                <li><a href="/personel/Index/">-Personeller-</a></li>
+                <li><a href="/oda/Index/">-Odalar-</a></li>
+                <li><a href="/bolumler/Index/">-Bölümler-</a></li>
+                <li><a href="/borc/Index/">-Öğrenci Borçları-</a></li>
+               
+                <li><a href="/guvenlik/girisYap">-Giriş yap-</a></li>
+                <li><a href="/guvenlik/cikisYap">-Çıkış yap-</a></li>
+                <li><br />
+                    <div class="dropdown">
+                        
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>-bölümler-</b> 
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/listeleme/index">bilgisayar mühendisliği <br /></a>
+                            <a class="dropdown-item" href="/listeleme/elektrik">elektrik <br /></a>
+                            <a class="dropdown-item" href="/listeleme/makine">makine <br /></a>
+                         
+
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#">
+                        -
+                        <script language="JavaScript">
+
+<!--
+var now = new Date(); var yr = now.getYear(); var mName = now.getMonth() + 1; var dName = now.getDay() + 1;
+var yr_str = " 19";
+var dayNr = ((now.getDate()<10) ? "" : "")+ now.getDate(); if(dName==1) Day = "Pazar"; if(dName==2) Day = "Pazartesi"; if(dName==3) Day = "Salı"; if(dName==4) Day = "Çarşamba"; if(dName==5) Day = "Perşembe"; if(dName==6) Day = "Cuma"; if(dName==7) Day = "Cumartesi"; if(mName==1) Month="Ocak"; if(mName==2) Month="Şubat"; if(mName==3) Month="Mart";
+if(mName==4) Month="Nisan"; if(mName==5) Month="Mayıs"; if(mName==6) Month="Haziran"; if(mName==7) Month="Temmuz"; if(mName==8) Month="Ağustos"; if(mName==9) Month="Eylül";
+if(mName==10) Month="Ekim"; if(mName==11) Month="Kasım"; if(mName==12) Month="Aralık";
+if ( yr > 99 )
+{
+yr_str =" ";
+if ( yr < 2000 ) yr += 1900;
+}var todaysDate =(" " + dayNr + " " + Month + yr_str + yr + "" + " " + Day + ""); document.open(); document.write("<FONT face=arial SIZE=3 color=white>"+todaysDate+"</FONT>");
+                        </script>-
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+    </style>
+
+    <div class="footer">
+        <p>2022 Serkan Bahtiyar</p>
+    </div>
+</body>
+</html>

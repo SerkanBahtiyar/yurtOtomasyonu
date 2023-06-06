@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="projeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bolumler">
+          <Key>
+            <PropertyRef Name="Bolumid" />
+          </Key>
+          <Property Name="Bolumid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BolumAd" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="borclar">
+          <Key>
+            <PropertyRef Name="OgrId" />
+          </Key>
+          <Property Name="OgrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrAd" Type="varchar" MaxLength="50" />
+          <Property Name="OgrSoyad" Type="varchar" MaxLength="50" />
+          <Property Name="OgrKalanBorc" Type="varchar" MaxLength="50" />
+          <Property Name="OgrBorcId" Type="int" />
+        </EntityType>
+        <EntityType Name="giderler">
+          <Key>
+            <PropertyRef Name="Odemeid" />
+          </Key>
+          <Property Name="Odemeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Elektrik" Type="int" />
+          <Property Name="Su" Type="int" />
+          <Property Name="Dogalgaz" Type="int" />
+          <Property Name="internet" Type="int" />
+          <Property Name="Gida" Type="int" />
+          <Property Name="Personel" Type="int" />
+          <Property Name="Diger" Type="int" />
+          <Property Name="personelId" Type="int" />
+        </EntityType>
+        <EntityType Name="Kasa">
+          <Key>
+            <PropertyRef Name="OdemeId" />
+          </Key>
+          <Property Name="OdemeAy" Type="varchar" MaxLength="50" />
+          <Property Name="OdemeMiktar" Type="int" />
+          <Property Name="OdemeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kullanici">
+          <Key>
+            <PropertyRef Name="kullaniciId" />
+          </Key>
+          <Property Name="kullaniciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="50" />
+          <Property Name="sifre" Type="varchar" MaxLength="50" />
+          <Property Name="rol" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="odalar">
+          <Key>
+            <PropertyRef Name="OdaId" />
+          </Key>
+          <Property Name="OdaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OdaNo" Type="varchar" MaxLength="50" />
+          <Property Name="OdaKapasite" Type="varchar" MaxLength="50" />
+          <Property Name="OdaAktif" Type="varchar" MaxLength="50" />
+          <Property Name="OdaDurum" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ogrenci">
+          <Key>
+            <PropertyRef Name="Ogrid" />
+          </Key>
+          <Property Name="Ogrid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrAd" Type="varchar" MaxLength="50" />
+          <Property Name="OgrSoyad" Type="varchar" MaxLength="50" />
+          <Property Name="OgrTc" Type="varchar" MaxLength="50" />
+          <Property Name="OgrTelefon" Type="varchar" MaxLength="50" />
+          <Property Name="OgrDogum" Type="varchar" MaxLength="50" />
+          <Property Name="OgrBolum" Type="varchar" MaxLength="50" />
+          <Property Name="OgrMail" Type="varchar" MaxLength="50" />
+          <Property Name="OgrOdaNo" Type="varchar" MaxLength="50" />
+          <Property Name="OgrVeliAdSoyad" Type="varchar" MaxLength="50" />
+          <Property Name="OgrVeliTelefon" Type="varchar" MaxLength="50" />
+          <Property Name="OgrVeliAdres" Type="varchar" MaxLength="50" />
+          <Property Name="OgrenciBolumid" Type="int" />
+          <Property Name="OgrOda" Type="int" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="Personelid" />
+          </Key>
+          <Property Name="Personelid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelAdSoyad" Type="varchar" MaxLength="50" />
+          <Property Name="PersonelDepartman" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_borclar_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="0..1" />
+          <End Role="borclar" Type="Self.borclar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="Ogrid" />
+            </Principal>
+            <Dependent Role="borclar">
+              <PropertyRef Name="OgrBorcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_giderler_personel1">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="giderler" Type="Self.giderler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="Personelid" />
+            </Principal>
+            <Dependent Role="giderler">
+              <PropertyRef Name="personelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kasa_giderler">
+          <End Role="giderler" Type="Self.giderler" Multiplicity="1" />
+          <End Role="Kasa" Type="Self.Kasa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="giderler">
+              <PropertyRef Name="Odemeid" />
+            </Principal>
+            <Dependent Role="Kasa">
+              <PropertyRef Name="OdemeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kasa_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="Kasa" Type="Self.Kasa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="Ogrid" />
+            </Principal>
+            <Dependent Role="Kasa">
+              <PropertyRef Name="OdemeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ogrenci_bolumler">
+          <End Role="bolumler" Type="Self.bolumler" Multiplicity="0..1" />
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolumler">
+              <PropertyRef Name="Bolumid" />
+            </Principal>
+            <Dependent Role="ogrenci">
+              <PropertyRef Name="OgrenciBolumid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ogrenci_odalar">
+          <End Role="odalar" Type="Self.odalar" Multiplicity="0..1" />
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="odalar">
+              <PropertyRef Name="OdaId" />
+            </Principal>
+            <Dependent Role="ogrenci">
+              <PropertyRef Name="OgrOda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ogrenciGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrenci" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="projeModelStoreContainer">
+          <EntitySet Name="bolumler" EntityType="Self.bolumler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="borclar" EntityType="Self.borclar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="giderler" EntityType="Self.giderler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kasa" EntityType="Self.Kasa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kullanici" EntityType="Self.kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="odalar" EntityType="Self.odalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ogrenci" EntityType="Self.ogrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personel" EntityType="Self.personel" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_borclar_ogrenci" Association="Self.FK_borclar_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="borclar" EntitySet="borclar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_giderler_personel1" Association="Self.FK_giderler_personel1">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="giderler" EntitySet="giderler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kasa_giderler" Association="Self.FK_Kasa_giderler">
+            <End Role="giderler" EntitySet="giderler" />
+            <End Role="Kasa" EntitySet="Kasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kasa_ogrenci" Association="Self.FK_Kasa_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="Kasa" EntitySet="Kasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ogrenci_bolumler" Association="Self.FK_ogrenci_bolumler">
+            <End Role="bolumler" EntitySet="bolumler" />
+            <End Role="ogrenci" EntitySet="ogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ogrenci_odalar" Association="Self.FK_ogrenci_odalar">
+            <End Role="odalar" EntitySet="odalar" />
+            <End Role="ogrenci" EntitySet="ogrenci" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="projeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bolumler">
+          <Key>
+            <PropertyRef Name="Bolumid" />
+          </Key>
+          <Property Name="Bolumid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BolumAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ogrenci" Relationship="Self.FK_ogrenci_bolumler" FromRole="bolumler" ToRole="ogrenci" />
+        </EntityType>
+        <EntityType Name="borclar">
+          <Key>
+            <PropertyRef Name="OgrId" />
+          </Key>
+          <Property Name="OgrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrKalanBorc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrBorcId" Type="Int32" />
+          <NavigationProperty Name="ogrenci" Relationship="Self.FK_borclar_ogrenci" FromRole="borclar" ToRole="ogrenci" />
+        </EntityType>
+        <EntityType Name="giderler">
+          <Key>
+            <PropertyRef Name="Odemeid" />
+          </Key>
+          <Property Name="Odemeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Elektrik" Type="Int32" />
+          <Property Name="Su" Type="Int32" />
+          <Property Name="Dogalgaz" Type="Int32" />
+          <Property Name="internet" Type="Int32" />
+          <Property Name="Gida" Type="Int32" />
+          <Property Name="Personel" Type="Int32" />
+          <Property Name="Diger" Type="Int32" />
+          <Property Name="personelId" Type="Int32" />
+          <NavigationProperty Name="personel1" Relationship="Self.FK_giderler_personel1" FromRole="giderler" ToRole="personel" />
+          <NavigationProperty Name="Kasa" Relationship="Self.FK_Kasa_giderler" FromRole="giderler" ToRole="Kasa" />
+        </EntityType>
+        <EntityType Name="Kasa">
+          <Key>
+            <PropertyRef Name="OdemeId" />
+          </Key>
+          <Property Name="OdemeAy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OdemeMiktar" Type="Int32" />
+          <Property Name="OdemeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="giderler" Relationship="Self.FK_Kasa_giderler" FromRole="Kasa" ToRole="giderler" />
+          <NavigationProperty Name="ogrenci" Relationship="Self.FK_Kasa_ogrenci" FromRole="Kasa" ToRole="ogrenci" />
+        </EntityType>
+        <EntityType Name="kullanici">
+          <Key>
+            <PropertyRef Name="kullaniciId" />
+          </Key>
+          <Property Name="kullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="odalar">
+          <Key>
+            <PropertyRef Name="OdaId" />
+          </Key>
+          <Property Name="OdaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OdaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OdaKapasite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ogrenci" Relationship="Self.FK_ogrenci_odalar" FromRole="odalar" ToRole="ogrenci" />
+        </EntityType>
+        <EntityType Name="ogrenci">
+          <Key>
+            <PropertyRef Name="Ogrid" />
+          </Key>
+          <Property Name="Ogrid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrTc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrDogum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrBolum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrOdaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrVeliAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrVeliTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrVeliAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrenciBolumid" Type="Int32" />
+          <Property Name="OgrOda" Type="Int32" />
+          <NavigationProperty Name="bolumler" Relationship="Self.FK_ogrenci_bolumler" FromRole="ogrenci" ToRole="bolumler" />
+          <NavigationProperty Name="borclar" Relationship="Self.FK_borclar_ogrenci" FromRole="ogrenci" ToRole="borclar" />
+          <NavigationProperty Name="Kasa" Relationship="Self.FK_Kasa_ogrenci" FromRole="ogrenci" ToRole="Kasa" />
+          <NavigationProperty Name="odalar" Relationship="Self.FK_ogrenci_odalar" FromRole="ogrenci" ToRole="odalar" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="Personelid" />
+          </Key>
+          <Property Name="Personelid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PersonelDepartman" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="giderler" Relationship="Self.FK_giderler_personel1" FromRole="personel" ToRole="giderler" />
+        </EntityType>
+        <Association Name="FK_ogrenci_bolumler">
+          <End Role="bolumler" Type="Self.bolumler" Multiplicity="0..1" />
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolumler">
+              <PropertyRef Name="Bolumid" />
+            </Principal>
+            <Dependent Role="ogrenci">
+              <PropertyRef Name="OgrenciBolumid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_borclar_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="0..1" />
+          <End Role="borclar" Type="Self.borclar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="Ogrid" />
+            </Principal>
+            <Dependent Role="borclar">
+              <PropertyRef Name="OgrBorcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_giderler_personel1">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="giderler" Type="Self.giderler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="Personelid" />
+            </Principal>
+            <Dependent Role="giderler">
+              <PropertyRef Name="personelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kasa_giderler">
+          <End Role="giderler" Type="Self.giderler" Multiplicity="1" />
+          <End Role="Kasa" Type="Self.Kasa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="giderler">
+              <PropertyRef Name="Odemeid" />
+            </Principal>
+            <Dependent Role="Kasa">
+              <PropertyRef Name="OdemeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kasa_ogrenci">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1" />
+          <End Role="Kasa" Type="Self.Kasa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="Ogrid" />
+            </Principal>
+            <Dependent Role="Kasa">
+              <PropertyRef Name="OdemeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ogrenci_odalar">
+          <End Role="odalar" Type="Self.odalar" Multiplicity="0..1" />
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="odalar">
+              <PropertyRef Name="OdaId" />
+            </Principal>
+            <Dependent Role="ogrenci">
+              <PropertyRef Name="OgrOda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projeEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bolumler" EntityType="Self.bolumler" />
+          <EntitySet Name="borclar" EntityType="Self.borclar" />
+          <EntitySet Name="giderler" EntityType="Self.giderler" />
+          <EntitySet Name="Kasa" EntityType="Self.Kasa" />
+          <EntitySet Name="kullanici" EntityType="Self.kullanici" />
+          <EntitySet Name="odalar" EntityType="Self.odalar" />
+          <EntitySet Name="ogrenci" EntityType="Self.ogrenci" />
+          <EntitySet Name="personel" EntityType="Self.personel" />
+          <AssociationSet Name="FK_ogrenci_bolumler" Association="Self.FK_ogrenci_bolumler">
+            <End Role="bolumler" EntitySet="bolumler" />
+            <End Role="ogrenci" EntitySet="ogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_borclar_ogrenci" Association="Self.FK_borclar_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="borclar" EntitySet="borclar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_giderler_personel1" Association="Self.FK_giderler_personel1">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="giderler" EntitySet="giderler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kasa_giderler" Association="Self.FK_Kasa_giderler">
+            <End Role="giderler" EntitySet="giderler" />
+            <End Role="Kasa" EntitySet="Kasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kasa_ogrenci" Association="Self.FK_Kasa_ogrenci">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="Kasa" EntitySet="Kasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ogrenci_odalar" Association="Self.FK_ogrenci_odalar">
+            <End Role="odalar" EntitySet="odalar" />
+            <End Role="ogrenci" EntitySet="ogrenci" />
+          </AssociationSet>
+          <FunctionImport Name="ogrenciGetir" ReturnType="Collection(projeModel.ogrenciGetir_Result)">
+            <Parameter Name="ogrenci" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ogrenciGetir_Result">
+          <Property Type="Int32" Name="Ogrid" Nullable="false" />
+          <Property Type="String" Name="OgrAd" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrSoyad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrTc" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrTelefon" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrDogum" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrBolum" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrMail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrOdaNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrVeliAdSoyad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrVeliTelefon" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OgrVeliAdres" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="OgrenciBolumid" Nullable="true" />
+          <Property Type="Int32" Name="OgrOda" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="projeModelStoreContainer" CdmEntityContainer="projeEntities2">
+          <EntitySetMapping Name="bolumler">
+            <EntityTypeMapping TypeName="projeModel.bolumler">
+              <MappingFragment StoreEntitySet="bolumler">
+                <ScalarProperty Name="Bolumid" ColumnName="Bolumid" />
+                <ScalarProperty Name="BolumAd" ColumnName="BolumAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="borclar">
+            <EntityTypeMapping TypeName="projeModel.borclar">
+              <MappingFragment StoreEntitySet="borclar">
+                <ScalarProperty Name="OgrId" ColumnName="OgrId" />
+                <ScalarProperty Name="OgrAd" ColumnName="OgrAd" />
+                <ScalarProperty Name="OgrSoyad" ColumnName="OgrSoyad" />
+                <ScalarProperty Name="OgrKalanBorc" ColumnName="OgrKalanBorc" />
+                <ScalarProperty Name="OgrBorcId" ColumnName="OgrBorcId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="giderler">
+            <EntityTypeMapping TypeName="projeModel.giderler">
+              <MappingFragment StoreEntitySet="giderler">
+                <ScalarProperty Name="Odemeid" ColumnName="Odemeid" />
+                <ScalarProperty Name="Elektrik" ColumnName="Elektrik" />
+                <ScalarProperty Name="Su" ColumnName="Su" />
+                <ScalarProperty Name="Dogalgaz" ColumnName="Dogalgaz" />
+                <ScalarProperty Name="internet" ColumnName="internet" />
+                <ScalarProperty Name="Gida" ColumnName="Gida" />
+                <ScalarProperty Name="Personel" ColumnName="Personel" />
+                <ScalarProperty Name="Diger" ColumnName="Diger" />
+                <ScalarProperty Name="personelId" ColumnName="personelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kasa">
+            <EntityTypeMapping TypeName="projeModel.Kasa">
+              <MappingFragment StoreEntitySet="Kasa">
+                <ScalarProperty Name="OdemeAy" ColumnName="OdemeAy" />
+                <ScalarProperty Name="OdemeMiktar" ColumnName="OdemeMiktar" />
+                <ScalarProperty Name="OdemeId" ColumnName="OdemeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kullanici">
+            <EntityTypeMapping TypeName="projeModel.kullanici">
+              <MappingFragment StoreEntitySet="kullanici">
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="odalar">
+            <EntityTypeMapping TypeName="projeModel.odalar">
+              <MappingFragment StoreEntitySet="odalar">
+                <ScalarProperty Name="OdaId" ColumnName="OdaId" />
+                <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
+                <ScalarProperty Name="OdaKapasite" ColumnName="OdaKapasite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ogrenci">
+            <EntityTypeMapping TypeName="projeModel.ogrenci">
+              <MappingFragment StoreEntitySet="ogrenci">
+                <ScalarProperty Name="Ogrid" ColumnName="Ogrid" />
+                <ScalarProperty Name="OgrAd" ColumnName="OgrAd" />
+                <ScalarProperty Name="OgrSoyad" ColumnName="OgrSoyad" />
+                <ScalarProperty Name="OgrTc" ColumnName="OgrTc" />
+                <ScalarProperty Name="OgrTelefon" ColumnName="OgrTelefon" />
+                <ScalarProperty Name="OgrDogum" ColumnName="OgrDogum" />
+                <ScalarProperty Name="OgrBolum" ColumnName="OgrBolum" />
+                <ScalarProperty Name="OgrMail" ColumnName="OgrMail" />
+                <ScalarProperty Name="OgrOdaNo" ColumnName="OgrOdaNo" />
+                <ScalarProperty Name="OgrVeliAdSoyad" ColumnName="OgrVeliAdSoyad" />
+                <ScalarProperty Name="OgrVeliTelefon" ColumnName="OgrVeliTelefon" />
+                <ScalarProperty Name="OgrVeliAdres" ColumnName="OgrVeliAdres" />
+                <ScalarProperty Name="OgrenciBolumid" ColumnName="OgrenciBolumid" />
+                <ScalarProperty Name="OgrOda" ColumnName="OgrOda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personel">
+            <EntityTypeMapping TypeName="projeModel.personel">
+              <MappingFragment StoreEntitySet="personel">
+                <ScalarProperty Name="Personelid" ColumnName="Personelid" />
+                <ScalarProperty Name="PersonelAdSoyad" ColumnName="PersonelAdSoyad" />
+                <ScalarProperty Name="PersonelDepartman" ColumnName="PersonelDepartman" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ogrenciGetir" FunctionName="projeModel.Store.ogrenciGetir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="projeModel.ogrenciGetir_Result">
+                <ScalarProperty Name="Ogrid" ColumnName="Ogrid" />
+                <ScalarProperty Name="OgrAd" ColumnName="OgrAd" />
+                <ScalarProperty Name="OgrSoyad" ColumnName="OgrSoyad" />
+                <ScalarProperty Name="OgrTc" ColumnName="OgrTc" />
+                <ScalarProperty Name="OgrTelefon" ColumnName="OgrTelefon" />
+                <ScalarProperty Name="OgrDogum" ColumnName="OgrDogum" />
+                <ScalarProperty Name="OgrBolum" ColumnName="OgrBolum" />
+                <ScalarProperty Name="OgrMail" ColumnName="OgrMail" />
+                <ScalarProperty Name="OgrOdaNo" ColumnName="OgrOdaNo" />
+                <ScalarProperty Name="OgrVeliAdSoyad" ColumnName="OgrVeliAdSoyad" />
+                <ScalarProperty Name="OgrVeliTelefon" ColumnName="OgrVeliTelefon" />
+                <ScalarProperty Name="OgrVeliAdres" ColumnName="OgrVeliAdres" />
+                <ScalarProperty Name="OgrenciBolumid" ColumnName="OgrenciBolumid" />
+                <ScalarProperty Name="OgrOda" ColumnName="OgrOda" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

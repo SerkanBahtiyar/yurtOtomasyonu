@@ -1,0 +1,49 @@
+﻿@model projeSerB.Models.Entity.ogrenci
+
+@{
+    ViewBag.Title = "YeniOgrenci";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div> 
+        
+        <label>öğrenci adı</label>
+        <input type="text" class="form-control" name="OgrAd" />
+        <label>öğrenci soyadı</label>
+        <input type="text" class="form-control" name="OgrSoyad"/>
+        <label>öğrenci TC</label>
+        <input type="text" class="form-control" name="OgrTc" />
+        <label>öğrenci telefon</label>
+        <input type="text" class="form-control" name="OgrTelefon" />
+        <label>öğrenci Doğum</label>
+        <input type="text" class="form-control" name="OgrDogum" />
+
+        <label>öğrenci bölüm id</label>
+        @Html.DropDownListFor(s => s.bolumler.Bolumid, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+
+        <label>mail</label>
+        <input type="text" class="form-control" name="OgrMail" /> 
+
+        <label>öğrenci Oda id</label>
+        @Html.DropDownListFor(s =>s.odalar.OdaId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+      
+           
+       
+        
+
+
+        <label>öğrenci Veli Ad Soyad</label>
+        <input type="text" class="form-control" name="OgrVeliAdSoyad" />
+        <label>öğrenci Veli Telefon</label>
+        <input type="text" class="form-control" name="OgrVeliTelefon" />
+        <label>öğrenci Veli Adres</label>
+        <input type="text" class="form-control" name="OgrVeliAdres" />
+        
+
+    </div>
+    <div style="margin-bottom:100px">
+        <div><button class="btn btn-info">öğrenci ekle</button></div>
+        </div>
+
+</form>

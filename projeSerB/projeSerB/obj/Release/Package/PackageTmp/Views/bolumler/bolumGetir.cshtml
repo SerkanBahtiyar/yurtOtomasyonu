@@ -1,0 +1,22 @@
+﻿@model projeSerB.Models.Entity.bolumler
+@{
+    ViewBag.Title = "bolumGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("guncelle", "bolumler", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(s => s.Bolumid)
+        @Html.TextBoxFor(s => s.Bolumid, new { @class = "form-control" })
+        @Html.LabelFor(s => s.BolumAd)
+        @Html.TextBoxFor(s => s.BolumAd, new { @class = "form-control" })
+    </div>
+    <div>
+        <div style="margin-bottom:100px">
+            <button class="btn btn-warning">güncelle</button>
+        </div>
+    </div>
+}
+
+

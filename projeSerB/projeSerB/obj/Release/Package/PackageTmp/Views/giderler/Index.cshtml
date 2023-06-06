@@ -1,0 +1,42 @@
+﻿@using projeSerB.Models.Entity
+@model List<giderler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<table class="table table-bordered">
+    <tr>
+        <th>Ödeme İd</th>
+        <th>Elektrik</th>
+        <th>Su</th>
+        <th>Doğalgaz</th>
+        <th>İnternet</th>
+        <th>Gıda</th>
+        <th>Personel</th>
+        <th>Diğer</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    <tbody>
+        @foreach (var getir in Model)
+        {
+            <tr>
+                <th><font color="orange">@getir.Odemeid</font></th>
+                <th><font color="orange">@getir.Elektrik</font></th>
+                <th><font color="orange">@getir.Su</font></th>
+                <th><font color="orange">@getir.Dogalgaz</font></th>
+                <th><font color="orange">@getir.internet</font></th>
+                <th><font color="orange">@getir.Gida</font></th>
+                <th><font color="orange">@getir.Personel</font></th>
+                <th><font color="orange">@getir.Diger</font></th>
+                <td><a href="/giderler/giderGetir/@getir.Odemeid" class="btn btn-primary">güncelle</a></td>
+
+                <td><a href="/giderler/sil/@getir.Odemeid" class="btn btn-danger">sil</a></td>
+
+               
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/giderler/yeniGider/" class="btn btn-success">Gider ekle</a>
+

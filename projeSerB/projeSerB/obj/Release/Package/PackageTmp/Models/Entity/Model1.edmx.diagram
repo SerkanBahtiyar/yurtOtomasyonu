@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a23bd05174347968cd2db5c5a6af786" Name="Diagram1" ZoomLevel="91">
+        <EntityTypeShape EntityType="projeModel.bolumler" Width="1.5" PointX="1.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeModel.borclar" Width="1.5" PointX="5.375" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeModel.giderler" Width="1.5" PointX="5.375" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeModel.Kasa" Width="1.5" PointX="7.375" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeModel.kullanici" Width="1.5" PointX="7.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeModel.odalar" Width="1.5" PointX="1.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeModel.ogrenci" Width="1.5" PointX="3.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projeModel.personel" Width="1.5" PointX="1.5" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="projeModel.FK_ogrenci_bolumler" ManuallyRouted="false" />
+        <AssociationConnector Association="projeModel.FK_borclar_ogrenci" ManuallyRouted="false" />
+        <AssociationConnector Association="projeModel.FK_giderler_personel1" ManuallyRouted="false" />
+        <AssociationConnector Association="projeModel.FK_Kasa_giderler" ManuallyRouted="false" />
+        <AssociationConnector Association="projeModel.FK_Kasa_ogrenci" ManuallyRouted="false" />
+        <AssociationConnector Association="projeModel.FK_ogrenci_odalar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

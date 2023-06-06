@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "YeniOgrenci";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>OGRENCİ ADI</label>
+        <input type="text" class="form-control" name="OgrAd" />
+        <label>OGRENCİ SOYADI</label>
+        <input type="text" class="form-control" name="OgrSoyad" />
+        <label>OGRENCİ TC</label>
+        <input type="text" class="form-control" name="OgrTc" />
+        <label>OGRENCİ TELEFON</label>
+        <input type="text" class="form-control" name="OgrTelefon" />
+        <label>OGRENCİ DOĞUM TARİHİ</label>
+        <input type="text" class="form-control" name="OgrDogum" />
+        <label>SEÇİLECEK ALAN (SAYISAL,SÖZEL,EŞİTAĞIRLIK,DİL )</label>
+        <input type="text" class="form-control" name="OgrAlan" />
+      
+   <br />
+         
+        
+        <label>OGRENCİ MAIL</label>
+        <input type="text" class="form-control" name="OgrMail" />
+        <label>OGRENCİ SINIF NO</label>
+        <input type="text" class="form-control" name="OgrSinifNo" />
+        
+        
+
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">ÖĞRENCİ EKLE</button>
+    </div>
+</form>
